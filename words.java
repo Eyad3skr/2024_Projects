@@ -17,7 +17,7 @@ public class words {
         randomWords.put("A word that contains all of the twenty-six letters?", "alphabet");
         randomWords.put("A color you can eat", "orange");
         randomWords.put("I touch the earth and I touch the sky, but if I touch you, you’ll likely die.", "lightning");
-     /*   randomWords.put("Forward I am heavy, but backward I am not. What am I?", "ton");
+        randomWords.put("Forward I am heavy, but backward I am not. What am I?", "ton");
         randomWords.put("I’m tall when I’m young, and I’m short when I’m old. What am I?", "candle");
         randomWords.put("Goes up but never comes down", "age");
         randomWords.put("I shave every day, but my beard stays the same", "barber");
@@ -34,7 +34,7 @@ public class words {
         randomWords.put("If you drop me I’m sure to crack, but give me a smile and I’ll always smile back.", "mirror");
         randomWords.put("I turn once, what is out will not get in. I turn again, what is in will not get out. What am I?", "key");
         randomWords.put("I have lakes with no water, mountains with no stone and cities with no buildings. What am I?", "map");
-        randomWords.put("What word is pronounced the same if you take away four of its five letters?", "queue");*/
+        randomWords.put("What word is pronounced the same if you take away four of its five letters?", "queue");
 
         // Initialize the selected word and letters array
         remainingRiddles = new ArrayList<>(randomWords.keySet());
