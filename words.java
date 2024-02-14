@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 public class words {
@@ -9,7 +7,6 @@ public class words {
     private char[] letters;
     private Random random = new Random();
     public String word;
-    List<String> remainingRiddles;
 
     public words() {
         // Initialize the HashMap in the constructor
@@ -37,22 +34,16 @@ public class words {
         randomWords.put("What word is pronounced the same if you take away four of its five letters?", "queue");
 
         // Initialize the selected word and letters array
-        remainingRiddles = new ArrayList<>(randomWords.keySet());
         selectedWord = getRandomWord();
         letters = new char[selectedWord.length()];
     }
 
     private String getRandomWord() {
-        if (remainingRiddles.isEmpty()) {
-            // If there are no more riddles, return an empty string or handle it as needed
-            return "Congratulations! You've guessed all the words!";
-        }
-        // Choose a random word from the remainingRiddles list
-        int randomIndex = random.nextInt(remainingRiddles.size());
-        String selectedRiddle = remainingRiddles.remove(randomIndex);
-        System.out.println(selectedRiddle);
-        word = randomWords.get(selectedRiddle);
-        return word;
+        // Choose a random word from the HashMap
+        int randomIndex = random.nextInt(randomWords.size());
+        System.out.println(randomWords.keySet().toArray()[randomIndex]);
+        word = (String) randomWords.values().toArray()[randomIndex];
+        return (String) randomWords.values().toArray()[randomIndex];
     }
 
     public String toString() {
@@ -65,6 +56,7 @@ public class words {
     }
 
     public boolean isGuessedRight() {
+
         for (char letter : letters) {
             if (letter == '\u0000') {
                 return false;
@@ -81,8 +73,17 @@ public class words {
                 flag = true;
             }
         }
-        if (!flag) {
+        if(!flag){
             man.mistakes++;
         }
     }
 }
+
+/*
+
+|      O      |
+|    / | \    |
+| = = / \ = = |
+|_____________|
+
+ */
