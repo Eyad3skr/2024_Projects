@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Vector;
 
 public class GuessTheWord {
     private boolean isPlaying = true;
@@ -7,7 +6,6 @@ public class GuessTheWord {
     private Scanner scanner = new Scanner(System.in);
     private Man man = new Man();
 
-    //to store index of picked riddles and check if they have been chosen before or not
     public void start() {
         while (isPlaying) {
             showWord();
@@ -19,6 +17,7 @@ public class GuessTheWord {
     private void showWord() {
         System.out.println(randomWord);
     }
+
     private void getInput() {
         System.out.println("Enter a letter to guess the word: ");
         String userGuess = scanner.nextLine().toLowerCase();
@@ -31,17 +30,13 @@ public class GuessTheWord {
 
     private void checkInput() {
         if (randomWord.isGuessedRight()) {
-            handleGameEnd("Congratulations! You won!\n" +
-                    "╔════════════════════════╗\n" +
-                    "║        YOU ARE         ║\n" +
-                    "║      THE CHAMPION      ║\n" +
-                    "╚════════════════════════╝\n" +
-                    "    .     *    .  \n" +
-                    "  *  / \\_ *   \n" +
-                    "    /    _ \\   *  \n" +
-                    "  *  \\ / \\     \n" +
-                    "     .  \n" +
-                    "   *     .  ");
+            handleGameEnd("╭────────────────────────────────╮\n" +
+                    "│            You Won!            │\n" +
+                    "│                                │\n" +
+                    "│     \uD83C\uDF86\uD83C\uDF87\uD83C\uDF1F\uD83C\uDF86\uD83C\uDF87\uD83C\uDF1F\uD83C\uDF86\uD83C\uDF87          │\n" +
+                    "│     \uD83C\uDF86\uD83C\uDF87\uD83C\uDF1F\uD83C\uDF86\uD83C\uDF87\uD83C\uDF1F\uD83C\uDF86\uD83C\uDF87          │\n" +
+                    "│                                │\n" +
+                    "╰────────────────────────────────╯\n");
         }
         else {
             man.displayCurrent();
@@ -54,19 +49,20 @@ public class GuessTheWord {
     }
 
     private void handleGameEnd(String message) {
-            System.out.println(message);
-            System.out.println("The Word is " + randomWord.word);
-            System.out.println("Want to play again? (yes/no)");
-            String playAgain = scanner.nextLine().toLowerCase();
-            if ("yes".equals(playAgain)) {
-                resetGame();
-            } else {
-                end();
-            }
+        System.out.println(message);
+        System.out.println("The Word is " + randomWord.word);
+        System.out.println("Want to play again? (yes/no)");
+        String playAgain = scanner.nextLine().toLowerCase();
+        if ("yes".equals(playAgain)) {
+            resetGame();
+        } else {
+            end();
+        }
     }
 
     private void resetGame() {
         randomWord = new words();
+        Man.mistakes = 0;
         man.reset();
     }
 
